@@ -1,39 +1,39 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import data from '../data';
-import './HomeScreen.css'
-const HomeScreen = () => {
-  const [products,SetProducts] = useState([]);
-  useEffect(()=>{
-    const fetchData =async () => {
-      const result = await axios.get()
-    }
-  },[]);
+import axios from 'axios';
+import '../index.css';
+
+function HomeScreen() {
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await axios.get('api/products');
+      setProducts(result.data);
+    };
+    fetchData();
+  }, []);
   return (
     <div>
-         <h1>
-          Featured products
-        </h1>
-       <div className='products'>
-       {
-          data.products.map((products)=>(
-             <div className='product' key={products.slug}>
-              <Link to={`/products/${products.slug}`}>
-              <img src={products.images} alt={products.name} />
+      <h1>Featured Products</h1>
+      <div className="products">
+        {products.map((product) => (
+          <div className="product" key={product.slug}>
+            <Link to={`/product/${product.slug}`}>
+              <img src={product.images} alt={product.name} />
+            </Link>
+            <div className="product-info">
+              <Link to={`/product/${product.slug}`}>
+                <p>{product.name}</p>
               </Link>
-               <div className='product-info'>
-                <Link to={`/products/${products.slug}`}>
-                <p>{products.name}</p>
-                </Link>
-                <p>{products.price}</p>
-                <button> Add to cart</button>
-                </div>
-             </div>
-          ))    
-        }
-       </div>
+              <p>
+                <strong>${product.price}</strong>
+              </p>
+              <button>Add to cart</button>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
-  )
+  );
 }
-
-export default HomeScreen
+export default HomeScreen;

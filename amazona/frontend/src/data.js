@@ -1,5 +1,5 @@
 const data = {
-    products :[
+    product :[
         {
             name:'Nike Shirt Black',
             slug: 'nike-shirt-black',
@@ -39,4 +39,4 @@ const data = {
 
     ]
 }
-// export default data
+export default data;
