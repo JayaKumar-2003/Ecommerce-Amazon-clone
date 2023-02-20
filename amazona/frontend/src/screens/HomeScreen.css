@@ -1,15 +1,16 @@
 .product img {
-    width: 25rem;
-    height: 30rem;
+    width:300px;
+    height:300px;
   }
   .products {
     margin: 2rem;
-    gap: 2rem;
+    gap: 5rem;
     display: flex;
     flex-wrap: wrap;
   }
   .product {
-    
+    width:300px;
+    height:300px;
     border: 1px #000000 solid;
   }
   .product-info {

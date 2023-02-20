@@ -11,3 +11,6 @@ header a {
   color: azure;
   text-decoration: none;
 }
+.text-centre {
+  float: inline-end;
+}
